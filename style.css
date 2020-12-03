@@ -1,0 +1,229 @@
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+.scene {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    background: linear-gradient(#111425, #3751e0);
+    background-attachment: fixed;
+    overflow: hidden;
+}
+
+.scene.active {
+    background: linear-gradient(#ffeb3b, #ff9800);
+
+}
+
+.scene::before {
+    content: "";
+    position: absolute;
+    bottom: -100%;
+    left: 0;
+    width: 100%;
+    height: 250px;
+    transition: 2s;
+    background: linear-gradient(transparent, #fff, #2598f3);
+}
+
+.scene.active::before {
+    bottom: 0;
+}
+
+.moon {
+    position: absolute;
+    top: 100px;
+    left: 200px;
+    width: 100px;
+    height: 100px;
+    background: #fff;
+    border-radius: 50%;
+    transition: 0.5s;
+    cursor: pointer;
+}
+
+.scene.active .moon {
+    left: 300px;
+    box-shadow: 0 0 0 20px rgba(255,555,555,0.5),
+                0 0 0 40px rgba(255,555,555,0.5),
+                0 0 0 80px rgba(255,555,555,0.5),
+                0 0 0 120px rgba(255,555,555,0.3),
+                0 0 0 180px rgba(255,555,555,0.2),
+                0 0 0 240px rgba(255,555,555,0.2),
+                0 0 0 300px rgba(255,555,555,0.1);
+    transition: 0.6s;
+}
+
+.moon::before {
+    content: "";
+    position: absolute;
+    top: -15px;
+    left: 10px;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    background: linear-gradient(#111425, #3751e0);
+    background-attachment: fixed;
+}
+
+.scene.active .moon::before {
+    opacity: 0;
+}
+
+.forest {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    transform: scale(1.2); /* Tipo da um zoom na imagem = se colocar -1.2 a imagem vira de cabeça para baixo*/
+    transition: 0.5s;
+}
+
+.scene.active .forest {
+    bottom: -100%;
+}
+
+.bg {
+    width: 100%;
+    position: absolute;
+    bottom: -120px;
+    transform: translateY(100%);
+    transition: 1s;
+}
+
+.scene.active .bg {
+    transform: translateY(0);
+}
+
+.scene i {
+    position: absolute;
+    background: #fff;
+    border-radius: 50%;
+    animation: animate linear infinite;
+}
+
+.scene.active i {
+    display: none;
+}
+
+.cloud1 {
+    position: absolute;
+    max-width: 600px;
+    left: 0;
+    z-index: 100000;
+    animation: animatedCloud 50s linear infinite;
+}
+
+.cloud2 {
+    position: absolute;
+    max-width: 600px;
+    left: 0;
+    z-index: 100000;
+    animation: animatedCloud 35s linear infinite;
+}
+
+.cloud3 {
+    position: absolute;
+    max-width: 600px;
+    left: 0;
+    top: 0;
+    z-index: 100000;
+    animation: animatedCloud 80s linear infinite;
+}
+
+.cloud4 {
+    position: absolute;
+    max-width: 200px;
+    left: 0;
+    top: 200px;
+    z-index: 100000;
+    animation: animatedCloud 70s linear infinite;
+    animation-delay: -20s;
+}
+
+.cloud5 {
+    position: absolute;
+    max-width: 500px;
+    left: 0px;
+    top: 150px;
+    z-index: 100000;
+    animation: animatedCloud 40s linear infinite;
+    animation-delay: -5s;
+}
+
+.cloud6 {
+    position: absolute;
+    max-width: 400px;
+    left: 0;
+    top: 75px;
+    z-index: 100000;
+    animation: animatedCloud 30s linear infinite;
+    animation-delay: -10s;
+}
+
+img {
+    pointer-events: none;
+}
+
+audio {
+    height: 30px;
+    outline: none;
+    position: absolute;
+    top: 30px;
+}
+
+.audioSuspense {
+    position: absolute;
+    top: 10px;
+    left: 20px;
+    transition: 1s;
+}
+
+.scene.active .audioSuspense {
+    left: -100%;
+
+}
+
+.audioSurf {
+    position: absolute;
+    top: 20px;
+    right: -100%;
+    transition: 1s;
+}
+
+.scene.active .audioSurf {
+    right: 20px;
+}
+
+
+@keyframes animate {
+    0% {
+        opacity: 0;
+        transform: translateY(0px);
+    }
+
+    
+    20%, 90% {
+        opacity: 1;
+    }
+    
+
+    100% {
+        opacity: 0;
+        transform: translateY(-100px);
+    }
+}
+
+@keyframes animatedCloud {
+    from {
+        transform: translateX(-100%) scale(1);
+    }
+    to {
+        transform: translateX(400%) scale(1.5);
+    }
+}
